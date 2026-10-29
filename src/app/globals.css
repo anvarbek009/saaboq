@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+:root {
+  /* User-Defined Amethyst & Royal Violet Palette */
+  --dark-amethyst: #10002b;      /* #10002b - Deepest obsidian purple - main body background */
+  --dark-amethyst-2: #240046;    /* #240046 - Dark velvet amethyst - panels, sidebar, cards */
+  --indigo-ink: #3c096c;         /* #3c096c - Deep royal indigo - inputs, elevated hover states */
+  --indigo-velvet: #5a189a;      /* #5a189a - Luminous border, subtle dividers, active cards */
+  --royal-violet: #7b2cbf;       /* #7b2cbf - Royal violet - secondary accents, borders, tags */
+  --lavender-purple: #9d4edd;    /* #9d4edd - Electric lavender - primary buttons, active icons */
+  --mauve-magic: #c77dff;        /* #c77dff - Neon mauve - brand "oq" glow, active lines, CTAs */
+  --mauve: #e0aaff;              /* #e0aaff - Ethereal light mauve - subtitles, badges, tags */
+
+  /* Semantic UI Tokens Mapped to the Amethyst Palette */
+  --bg-main: var(--dark-amethyst);            /* #10002b */
+  --bg-panel: var(--dark-amethyst-2);         /* #240046 */
+  --bg-elevated: var(--indigo-ink);           /* #3c096c */
+  --border: var(--indigo-velvet);             /* #5a189a */
+  --border-subtle: rgba(90, 24, 154, 0.4);   /* Subtle indigo divider */
+
+  --text-high: #fdfcff;                       /* Crisp crystalline ice-white for headings */
+  --text-mid: var(--mauve);                   /* #e0aaff - Ethereal light mauve for metadata */
+  --text-low: #bda0e6;                        /* Soft readable lavender for timestamps */
+  --text-muted: var(--royal-violet);          /* #7b2cbf */
+
+  /* Saaboq Brand Neon Mauve & Violet Accents */
+  --accent: var(--mauve-magic);               /* #c77dff */
+  --accent-secondary: var(--lavender-purple); /* #9d4edd */
+  --accent-text: #ffffff;
+}
+
+@theme {
+  --color-dark-amethyst: var(--dark-amethyst);
+  --color-dark-amethyst-2: var(--dark-amethyst-2);
+  --color-indigo-ink: var(--indigo-ink);
+  --color-indigo-velvet: var(--indigo-velvet);
+  --color-royal-violet: var(--royal-violet);
+  --color-lavender-purple: var(--lavender-purple);
+  --color-mauve-magic: var(--mauve-magic);
+  --color-mauve: var(--mauve);
+
+  --color-bg-main: var(--bg-main);
+  --color-bg-panel: var(--bg-panel);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-border: var(--border);
+
+  --color-text-high: var(--text-high);
+  --color-text-mid: var(--text-mid);
+  --color-text-low: var(--text-low);
+
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+}
+
+/* Base Body Setup */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-high);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Sticky Navbar Glass - backdrop blur with #10002b base */
+.saaboq-navbar {
+  background: rgba(16, 0, 43, 0.90);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Cards & Stationary Hover - Connected with Amethyst Palette */
+.saaboq-card {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+  border-radius: 8px;
+}
+.saaboq-card:hover {
+  background-color: var(--bg-elevated);
+  border-color: var(--royal-violet);
+  box-shadow: 0 4px 16px rgba(60, 9, 108, 0.45);
+}
+
+/* Connected Primary CTA Button - Radiant Violet to Mauve Gradient */
+.btn-primary {
+  background: linear-gradient(135deg, var(--indigo-velvet) 0%, var(--lavender-purple) 50%, var(--mauve-magic) 100%);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: opacity 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+  border: 1px solid rgba(224, 170, 255, 0.35);
+  box-shadow: 0 2px 10px rgba(157, 78, 221, 0.35);
+  cursor: pointer;
+}
+.btn-primary:hover {
+  opacity: 0.96;
+  box-shadow: 0 4px 18px rgba(199, 125, 255, 0.55);
+}
+
+/* Connected Secondary Button - Deep Indigo with Mauve Text & Royal Border */
+.btn-secondary {
+  background-color: var(--bg-elevated);
+  color: var(--mauve);
+  border: 1px solid var(--indigo-velvet);
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background-color: var(--indigo-velvet);
+  border-color: var(--royal-violet);
+  color: #ffffff;
+}
+
+/* Form Inputs */
+.saaboq-input {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border);
+  color: var(--text-high);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+.saaboq-input:focus {
+  border-color: var(--mauve-magic);
+  box-shadow: 0 0 0 2px rgba(199, 125, 255, 0.25);
+}
+.saaboq-input::placeholder {
+  color: rgba(224, 170, 255, 0.5);
+}
+
+/* Monospace Video Duration Badge */
+.video-duration-badge {
+  background: rgba(16, 0, 43, 0.92);
+  color: var(--mauve);
+  border: 1px solid var(--indigo-velvet);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* Active navigation indicator line */
+.nav-active-indicator {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--mauve-magic), var(--lavender-purple));
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(199, 125, 255, 0.7);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--indigo-velvet);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lavender-purple);
+}
